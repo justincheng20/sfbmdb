@@ -13,7 +13,7 @@ app.use(express.json());
 app.get('/', async function(req, res, next) {
   // Move logic to a model later
   try {
-    const data = await db.query(
+    const response = await db.query(
       `SELECT s.id,
               s.name,
               s.price,
@@ -23,7 +23,7 @@ app.get('/', async function(req, res, next) {
       ORDER BY s.id
       `
     );
-    console.log(data);
+    const data = response.rows;
     return res.status(200).json({ data });
   } catch (err) {
     return next(err);

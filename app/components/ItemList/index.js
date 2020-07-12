@@ -20,7 +20,7 @@ function ItemList({ data, loading, error }) {
           {data.items.length === 0 ? (
             <Item key={uuid()} item='"Nothing Added Yet"' />
           ) : (
-            data.items.map(item => <Item key={uuid()} item={item} />)
+            data.items.map(item => <Item key={uuid()} item={item.name} />)
           )}
         </ul>
       </StyledItemList>
