@@ -1,10 +1,3 @@
-/*
- * HomePage
- *
- * This is the first thing users see of our App, at the '/' route
- *
- */
-
 import React, { useEffect, memo } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
@@ -52,7 +45,7 @@ export function HomePage({ loading, error, onLoad, data }) {
         <FormattedMessage {...messages.header} />
       </h1>
       <Link className="button" to="/new">
-        Add a new item
+        Add a new entry
       </Link>
       <ItemList {...itemsListProps} />
     </div>

@@ -2,17 +2,7 @@ const express = require('express');
 const app = express();
 app.use(express.json());
 
-// Use pojos for now; will make SQL database and models later
-const sandwich1 = {
-  name: `chicken bahn mi`,
-  store: `Bahn Mi King`,
-  price: 7.0,
-  music: `80's synthpop`,
-  description: `It's hard to hate synthpop, but it's rarely amazing. Warm, reliable, and a bit soft. Both 
-  modern and outdated`,
-};
-
-let data = [sandwich1];
+let data = [];
 
 app.get('/', async function(req, res, next) {
   try {
