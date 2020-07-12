@@ -15,6 +15,7 @@ export default function App() {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/new" component={NewPage} />
+        <Route exact path="/sandwiches/:id" component={NewPage} />
         <Route component={NotFoundPage} />
       </Switch>
       <GlobalStyle />
