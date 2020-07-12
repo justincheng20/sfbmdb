@@ -21,6 +21,7 @@ const appReducer = (state = initialState, action) =>
   produce(state, draft => {
     switch (action.type) {
       case LOAD_ITEMS:
+        draft.loading = true;
         draft.error = false;
         break;
 
@@ -40,6 +41,7 @@ const appReducer = (state = initialState, action) =>
         break;
 
       case ADD_ITEM_SUCCESS:
+        // Can make API call here if we have no data
         if (state.data.items) {
           draft.data.items = [action.item, ...state.data.items];
         } else {

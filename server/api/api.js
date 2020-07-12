@@ -2,7 +2,12 @@ const express = require('express');
 const app = express();
 app.use(express.json());
 
-let data = [];
+let data = [
+  'Banh Mi King',
+  'Bamboo Asia',
+  'Les Croissants',
+  'Theoretical Perfect',
+];
 
 app.get('/', async function(req, res, next) {
   try {
