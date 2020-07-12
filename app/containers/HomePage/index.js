@@ -17,6 +17,8 @@ import {
   makeSelectLoading,
   makeSelectError,
 } from 'containers/App/selectors';
+import ItemList from 'components/ItemList';
+import { Link } from 'react-router-dom';
 import messages from './messages';
 import { loadItems } from '../App/actions';
 import saga from './saga';
@@ -45,9 +47,15 @@ export function HomePage({ loading, error, onLoad, data }) {
   }
 
   return (
-    <h1>
-      <FormattedMessage {...messages.header} />
-    </h1>
+    <div className="title">
+      <h1>
+        <FormattedMessage {...messages.header} />
+      </h1>
+      <Link className="button" to="/new">
+        Add a new item
+      </Link>
+      <ItemList {...itemsListProps} />
+    </div>
   );
 }
 
@@ -79,4 +87,3 @@ export default compose(
   withConnect,
   memo,
 )(HomePage);
-
