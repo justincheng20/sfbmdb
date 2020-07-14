@@ -5,6 +5,9 @@ import {
   ADD_ITEM,
   ADD_ITEM_SUCCESS,
   ADD_ITEM_ERROR,
+  LOAD_DETAILS,
+  LOAD_DETAILS_SUCCESS,
+  LOAD_DETAILS_ERROR,
 } from './constants';
 
 export function loadItems() {
@@ -44,6 +47,26 @@ export function itemAdded(item) {
 export function addItemError(error) {
   return {
     type: ADD_ITEM_ERROR,
+    error,
+  };
+}
+
+export function loadDetails() {
+  return {
+    type: LOAD_DETAILS,
+  };
+}
+
+export function detailsLoaded(details) {
+  return {
+    type: LOAD_DETAILS_SUCCESS,
+    details,
+  };
+}
+
+export function detailsLoadingError(error) {
+  return {
+    type: LOAD_DETAILS_ERROR,
     error,
   };
 }

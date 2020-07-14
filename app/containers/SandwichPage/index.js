@@ -12,7 +12,7 @@ import {
 } from 'containers/App/selectors';
 
 import messages from './messages';
-// import { loadItems } from '../App/actions';
+import { loadDetails } from '../App/actions';
 import saga from './saga';
 
 export function SandwichPage({ loading, error, onLoad, details }) {
