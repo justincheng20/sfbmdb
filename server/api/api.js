@@ -10,15 +10,13 @@ app.use(express.json());
 //   'Theoretical Perfect',
 // ];
 
-app.get('/', async function(req, res, next) {
+app.get('/', async function (req, res, next) {
   // Move logic to a model later
+  console.log("!")
   try {
     const response = await db.query(
       `SELECT s.id,
-              s.name,
-              s.price,
-              s.description,
-              s.music
+              s.name
       FROM sandwiches s 
       ORDER BY s.id
       `
@@ -30,16 +28,29 @@ app.get('/', async function(req, res, next) {
   }
 });
 
-app.get('/:id', async function(req, res, next) {
+app.get('/sandwiches/:id', async function (req, res, next) {
   try {
-    let data = [req.params.id]
-    return res.status(200).json({ data });
+    console.log(req.params.id)
+    const result = await db.query(
+      `SELECT s.id,
+              s.name,
+              s.description,
+              s.music
+      FROM sandwiches s 
+        LEFT JOIN comments c ON c.sandwich_id = s.id
+      WHERE s.id = $1
+      GROUP BY s.id    
+      ORDER BY s.id
+      `, [req.params.id]
+    );
+    console.log(result.rows[0]);
+    return res.json(result.rows[0]);
   } catch (err) {
     return next(err);
   }
 });
 
-app.post('/', async function(req, res, next) {
+app.post('/', async function (req, res, next) {
   try {
     const { item } = { ...req.body };
     if (item.trim().length === 0) throw new Error('error');

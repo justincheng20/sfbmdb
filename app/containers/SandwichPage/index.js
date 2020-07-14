@@ -1,4 +1,5 @@
 import React, { useEffect, memo } from 'react';
+import { useParams } from "react-router";
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
@@ -11,13 +12,16 @@ import {
   makeSelectError,
 } from 'containers/App/selectors';
 
-import messages from './messages';
+// import messages from './messages';
 import { loadDetails } from '../App/actions';
 import saga from './saga';
 
+const key = 'sandwiches';
+
 export function SandwichPage({ loading, error, onLoad, details }) {
   useInjectSaga({ key, saga });
-
+  let { id } = useParams();
+  console.log(id);
   useEffect(() => {
     if (!details) onLoad();
   }, []);

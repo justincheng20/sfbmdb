@@ -6,6 +6,9 @@ import {
   ADD_ITEM,
   ADD_ITEM_SUCCESS,
   ADD_ITEM_ERROR,
+  LOAD_DETAILS_SUCCESS,
+  LOAD_DETAILS,
+  LOAD_DETAILS_ERROR,
 } from './constants';
 
 export const initialState = {
@@ -14,6 +17,7 @@ export const initialState = {
   data: {
     items: false,
   },
+  details: false,
 };
 
 /* eslint-disable default-case, no-param-reassign */
@@ -51,6 +55,21 @@ const appReducer = (state = initialState, action) =>
         break;
 
       case ADD_ITEM_ERROR:
+        draft.error = action.error;
+        draft.loading = false;
+        break;
+
+      case LOAD_DETAILS:
+        draft.loading = true;
+        draft.error = false;
+        break;
+
+      case LOAD_DETAILS_SUCCESS:
+        draft.details = action.details;
+        draft.loading = false;
+        break;
+
+      case LOAD_DETAILS_ERROR:
         draft.error = action.error;
         draft.loading = false;
         break;

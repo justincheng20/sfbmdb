@@ -4,7 +4,7 @@ import { detailsLoaded, detailsLoadingError } from 'containers/App/actions';
 import request from 'utils/request';
 
 export function* getDetails(id) {
-  const requestURL = `http://localhost:3000/api/${id}`;
+  const requestURL = `http://localhost:3000/api/sandwiches/${id}`;
   try {
     const resp = yield call(request, requestURL);
     yield put(detailsLoaded(resp.data));
