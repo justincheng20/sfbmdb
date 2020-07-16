@@ -1,5 +1,5 @@
 import React, { useEffect, memo } from 'react';
-import { useParams } from "react-router";
+import { useParams } from 'react-router';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
@@ -23,7 +23,7 @@ export function SandwichPage({ loading, error, onLoad, details }) {
   let { id } = useParams();
   console.log(id);
   useEffect(() => {
-    if (!details) onLoad();
+    onLoad(id);
   }, []);
 
   const itemsListProps = {
@@ -61,7 +61,7 @@ const mapStateToProps = createStructuredSelector({
 
 export function mapDispatchToProps(dispatch) {
   return {
-    onLoad: () => dispatch(loadDetails()),
+    onLoad: (id) => dispatch(loadDetails(id)),
   };
 }
 

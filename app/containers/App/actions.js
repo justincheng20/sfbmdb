@@ -51,9 +51,10 @@ export function addItemError(error) {
   };
 }
 
-export function loadDetails() {
+export function loadDetails(id) {
   return {
     type: LOAD_DETAILS,
+    id,
   };
 }
 
