@@ -25,19 +25,28 @@ export function SandwichPage({ loading, error, onLoad, details }) {
     onLoad(id);
   }, []);
 
-  if (loading) {
+  if (loading || !details) {
     return 'Loading...';
   }
 
   if (error) {
     return 'Something went wrong.';
   }
+
+  console.log(details)
   return (
     <div className="title">
       <h1>{details.name}</h1>
       <div>{details.description}</div>
       <div>Tastes Like: {details.music}</div>
-      <div>Comments</div>
+      <div>
+        Comments
+        <ul>
+          {details.comments.length === 0
+            ? 'No comments yet'
+            : details.comments.map(comment => <li>{comment.text}</li>)}
+        </ul>
+      </div>
     </div>
   );
 }

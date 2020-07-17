@@ -65,7 +65,6 @@ const appReducer = (state = initialState, action) =>
         break;
 
       case LOAD_DETAILS_SUCCESS:
-        console.log(action)
         draft.details = action.details;
         draft.loading = false;
         break;

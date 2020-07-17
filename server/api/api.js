@@ -35,7 +35,10 @@ app.get('/sandwiches/:id', async function (req, res, next) {
       `SELECT s.id,
               s.name,
               s.description,
-              s.music
+              s.music,
+              CASE WHEN COUNT(c.id) = 0 THEN JSON '[]' ELSE JSON_AGG(
+                JSON_BUILD_OBJECT('id', c.id, 'text', c.text)
+            ) END AS comments
       FROM sandwiches s 
         LEFT JOIN comments c ON c.sandwich_id = s.id
       WHERE s.id = $1
@@ -43,7 +46,7 @@ app.get('/sandwiches/:id', async function (req, res, next) {
       ORDER BY s.id
       `, [req.params.id]
     );
-    console.log(result.rows[0]);
+    console.log("results", result.rows[0]);
     return res.json(result.rows[0]);
   } catch (err) {
     return next(err);
