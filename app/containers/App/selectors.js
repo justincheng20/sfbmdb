@@ -35,6 +35,12 @@ const makeSelectData = () =>
     globalState => globalState.data,
   );
 
+const makeSelectDetails = () =>
+  createSelector(
+    selectGlobal,
+    globalState => globalState.details,
+  );
+
 export {
   selectGlobal,
   makeSelectLoading,
@@ -42,4 +48,5 @@ export {
   makeSelectItems,
   makeSelectLocation,
   makeSelectData,
+  makeSelectDetails,
 };

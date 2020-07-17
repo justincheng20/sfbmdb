@@ -7,7 +7,7 @@ import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
 import { useInjectSaga } from 'utils/injectSaga';
 import {
-  makeSelectData,
+  makeSelectDetails,
   makeSelectLoading,
   makeSelectError,
 } from 'containers/App/selectors';
@@ -20,17 +20,10 @@ const key = 'sandwiches';
 
 export function SandwichPage({ loading, error, onLoad, details }) {
   useInjectSaga({ key, saga });
-  let { id } = useParams();
-  console.log(id);
+  const { id } = useParams();
   useEffect(() => {
     onLoad(id);
   }, []);
-
-  const itemsListProps = {
-    details,
-    loading,
-    error,
-  };
 
   if (loading) {
     return 'Loading...';
@@ -41,7 +34,10 @@ export function SandwichPage({ loading, error, onLoad, details }) {
   }
   return (
     <div className="title">
-      <h1>Stuff</h1>
+      <h1>{details.name}</h1>
+      <div>{details.description}</div>
+      <div>Tastes Like: {details.music}</div>
+      <div>Comments</div>
     </div>
   );
 }
@@ -54,7 +50,7 @@ SandwichPage.propTypes = {
 };
 
 const mapStateToProps = createStructuredSelector({
-  data: makeSelectData(),
+  details: makeSelectDetails(),
   loading: makeSelectLoading(),
   error: makeSelectError(),
 });
