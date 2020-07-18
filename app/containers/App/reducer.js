@@ -14,7 +14,7 @@ import {
 export const initialState = {
   loading: false,
   error: false,
-  sandwiches: false
+  sandwiches: false,
 };
 
 /* eslint-disable default-case, no-param-reassign */
