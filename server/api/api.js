@@ -22,6 +22,7 @@ app.get('/', async function (req, res, next) {
       `
     );
     const data = response.rows;
+    data.forEach(entry => (entry.data = false));
     return res.status(200).json({ data });
   } catch (err) {
     return next(err);
@@ -32,14 +33,10 @@ app.get('/sandwiches/:id', async function (req, res, next) {
   try {
     console.log(req.params.id)
     const result = await db.query(
-      `SELECT s.id,
-              s.name,
-              s.description,
-              s.music,
-              FROM sandwiches s 
+      `SELECT s.description,
+              s.music
+      FROM sandwiches s 
        WHERE s.id = $1
-      GROUP BY s.id    
-      ORDER BY s.id
       `, [req.params.id]
     );
     console.log("results", result.rows[0]);
