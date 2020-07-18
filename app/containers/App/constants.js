@@ -1,9 +1,4 @@
-export const LOAD_ITEMS = 'boilerplate/App/LOAD_ITEMS';
-export const LOAD_ITEMS_SUCCESS = 'boilerplate/App/LOAD_ITEMS_SUCCESS';
-export const LOAD_ITEMS_ERROR = 'boilerplate/App/LOAD_ITEMS_ERROR';
-export const ADD_ITEM = 'boilerplate/App/ADD_ITEMS';
-export const ADD_ITEM_SUCCESS = 'boilerplate/App/ADD_ITEMS_SUCCESS';
-export const ADD_ITEM_ERROR = 'boilerplate/App/ADD_ITEMS_ERROR';
-export const LOAD_DETAILS = 'boilerplate/App/LOAD_DETAILS';
-export const LOAD_DETAILS_SUCCESS = 'boilerplate/App/LOAD_DETAILS_SUCCESS';
-export const LOAD_DETAILS_ERROR = 'boilerplate/App/LOAD_DETAILS_ERROR';
+export const LOAD_SANDWICHES = 'boilerplate/App/LOAD_SANDWICHES';
+export const LOAD_SANDWICHES_SUCCESS = 'boilerplate/App/LOAD_SANDWICHES_SUCCESS';
+export const LOAD_SANDWICHES_ERROR = 'boilerplate/App/LOAD_SANDWICHES_ERROR';
+
