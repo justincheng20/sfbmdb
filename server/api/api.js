@@ -36,12 +36,8 @@ app.get('/sandwiches/:id', async function (req, res, next) {
               s.name,
               s.description,
               s.music,
-              CASE WHEN COUNT(c.id) = 0 THEN JSON '[]' ELSE JSON_AGG(
-                JSON_BUILD_OBJECT('id', c.id, 'text', c.text)
-            ) END AS comments
-      FROM sandwiches s 
-        LEFT JOIN comments c ON c.sandwich_id = s.id
-      WHERE s.id = $1
+              FROM sandwiches s 
+       WHERE s.id = $1
       GROUP BY s.id    
       ORDER BY s.id
       `, [req.params.id]
