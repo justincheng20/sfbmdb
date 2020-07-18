@@ -31,13 +31,13 @@ export function SandwichList({ loading, error, onLoad, data }) {
     error,
   };
 
-  if (loading) {
-    return 'Loading...';
-  }
+  // if (loading) {
+  //   return 'Loading...';
+  // }
 
-  if (error) {
-    return 'Something went wrong.';
-  }
+  // if (error) {
+  //   return 'Something went wrong.';
+  // }
 
   return (
     <div className="title">
