@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-const AddCommentForm = ({ }) => {
-  const INITIAL_STATE = { comment: "" };
+const AddCommentForm = () => {
+  const INITIAL_STATE = { comment: '' };
   const [formData, setFormData] = useState(INITIAL_STATE);
-
-
 
   const handleSubmit = evt => {
     evt.preventDefault();
@@ -12,17 +10,13 @@ const AddCommentForm = ({ }) => {
     setFormData(INITIAL_STATE);
   };
 
-
-
   const handleChange = evt => {
     const { name, value } = evt.target;
     setFormData(fData => ({
       ...fData,
-      [name]: value
+      [name]: value,
     }));
   };
-
-  /** render form */
 
   return (
     <form onSubmit={handleSubmit}>
@@ -30,13 +24,10 @@ const AddCommentForm = ({ }) => {
       <input
         id="comment"
         name="comment"
-        value={formData.name}
+        value={formData.comment}
         onChange={handleChange}
       />
-
-
-
-      <button>Add comment!</button>
+      <button type="submit">Add comment!</button>
     </form>
   );
 };

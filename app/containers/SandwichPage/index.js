@@ -15,6 +15,7 @@ import {
 // import messages from './messages';
 import { loadDetails } from '../App/actions';
 import saga from './saga';
+import AddCommentForm from '../AddComment';
 
 const key = 'sandwiches';
 
@@ -47,6 +48,7 @@ export function SandwichPage({ loading, error, onLoad, details }) {
             : details.comments.map(comment => <li>{comment.text}</li>)}
         </ul>
       </div>
+      <AddCommentForm />
     </div>
   );
 }
