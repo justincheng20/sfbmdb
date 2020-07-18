@@ -6,14 +6,14 @@ import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
 import { useInjectSaga } from 'utils/injectSaga';
 import {
-  makeSelectData,
+  makeSelectSandwiches,
   makeSelectLoading,
   makeSelectError,
 } from 'containers/App/selectors';
 import List from 'components/List';
 import { Link } from 'react-router-dom';
 import messages from './messages';
-import { loadItems } from '../App/actions';
+import { loadSandwiches } from '../App/actions';
 import saga from './saga';
 
 const key = 'sandwiches';
@@ -22,11 +22,11 @@ export function SandwichList({ loading, error, onLoad, data }) {
   useInjectSaga({ key, saga });
 
   useEffect(() => {
-    if (!data.items) onLoad();
+    if (!sandwiches) onLoad();
   }, []);
 
   const listProps = {
-    data,
+    sandwiches,
     loading,
     error,
   };
@@ -60,14 +60,14 @@ SandwichList.propTypes = {
 };
 
 const mapStateToProps = createStructuredSelector({
-  data: makeSelectData(),
+  sandwiches: makeSelectSandwiches(),
   loading: makeSelectLoading(),
   error: makeSelectError(),
 });
 
 export function mapDispatchToProps(dispatch) {
   return {
-    onLoad: () => dispatch(loadItems()),
+    onLoad: () => dispatch(loadSandwiches()),
   };
 }
 

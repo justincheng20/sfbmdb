@@ -17,10 +17,10 @@ const makeSelectError = () =>
     globalState => globalState.error,
   );
 
-const makeSelectItems = () =>
+const makeSelectSandwiches = () =>
   createSelector(
     selectGlobal,
-    globalState => globalState.data.items,
+    globalState => globalState.sandwiches,
   );
 
 const makeSelectLocation = () =>
@@ -29,24 +29,10 @@ const makeSelectLocation = () =>
     routerState => routerState.location,
   );
 
-const makeSelectData = () =>
-  createSelector(
-    selectGlobal,
-    globalState => globalState.data,
-  );
-
-const makeSelectDetails = () =>
-  createSelector(
-    selectGlobal,
-    globalState => globalState.details,
-  );
-
 export {
   selectGlobal,
   makeSelectLoading,
   makeSelectError,
-  makeSelectItems,
+  makeSelectSandwiches,
   makeSelectLocation,
-  makeSelectData,
-  makeSelectDetails,
 };
