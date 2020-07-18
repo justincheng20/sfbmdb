@@ -1,9 +1,12 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import { LOAD_SANDWICHES } from 'containers/App/constants';
-import { sandwichesLoaded, sandwichesLoadingError } from 'containers/App/actions';
+import {
+  sandwichesLoaded,
+  sandwichesLoadingError,
+} from 'containers/App/actions';
 import request from 'utils/request';
 
-export function* getItems() {
+export function* getSandwiches() {
   const requestURL = `http://localhost:3000/api`;
   try {
     const resp = yield call(request, requestURL);

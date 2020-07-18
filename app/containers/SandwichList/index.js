@@ -18,11 +18,11 @@ import saga from './saga';
 
 const key = 'sandwiches';
 
-export function SandwichList({ loading, error, onLoad, data }) {
+export function SandwichList({ loading, error, onLoad, sandwiches }) {
   useInjectSaga({ key, saga });
 
   useEffect(() => {
-    if (!sandwiches) onLoad();
+    if (sandwiches === false) onLoad();
   }, []);
 
   const listProps = {
@@ -55,7 +55,7 @@ export function SandwichList({ loading, error, onLoad, data }) {
 SandwichList.propTypes = {
   loading: PropTypes.bool,
   error: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
-  data: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
+  sandwiches: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
   onLoad: PropTypes.func,
 };
 
