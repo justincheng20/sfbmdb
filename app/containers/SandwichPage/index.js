@@ -36,16 +36,14 @@ export function SandwichPage({ loading, error, onLoad, details }) {
     return 'Something went wrong.';
   }
   
-  const src = `<iframe "https://open.spotify.com/embed/track/${sandwich.details.spotify}" 
-  width="300" height="380" frameborder="0" allowtransparency="true" 
-      allow="encrypted-media"></iframe>`
+  
 
   return (
     <div>
       <h1>{sandwich.name}</h1>
       <div>{sandwich.details.description}</div>
       <div>Tastes Like: {sandwich.details.music}</div>
-      <div>{src}</div>
+      <iframe src={`https://open.spotify.com/embed/track/${sandwich.details.spotify}`} width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
     </div>
   );
 }
