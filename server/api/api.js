@@ -32,7 +32,8 @@ app.get('/sandwiches/:id', async function (req, res, next) {
   try {
     const result = await db.query(
       `SELECT s.description,
-              s.music
+              s.music,
+              s.spotify
       FROM sandwiches s 
        WHERE s.id = $1
       `, [req.params.id]

@@ -3,9 +3,6 @@ import {
   LOAD_SANDWICHES_SUCCESS,
   LOAD_SANDWICHES,
   LOAD_SANDWICHES_ERROR,
-  // ADD_ITEM,
-  // ADD_ITEM_SUCCESS,
-  // ADD_ITEM_ERROR,
   LOAD_DETAILS_SUCCESS,
   LOAD_DETAILS,
   LOAD_DETAILS_ERROR,
@@ -36,34 +33,12 @@ const appReducer = (state = initialState, action) =>
         draft.loading = false;
         break;
 
-    //   case ADD_ITEM:
-    //     draft.loading = true;
-    //     draft.error = false;
-    //     break;
-
-    //   case ADD_ITEM_SUCCESS:
-    //     // Can make API call here if we have no data
-    //     if (state.data.items) {
-    //       draft.data.items = [action.item, ...state.data.items];
-    //     } else {
-    //       draft.data.items = [action.item];
-    //     }
-    //     draft.loading = false;
-    //     break;
-
-    //   case ADD_ITEM_ERROR:
-    //     draft.error = action.error;
-    //     draft.loading = false;
-    //     break;
-
       case LOAD_DETAILS:
         draft.loading = true;
         draft.error = false;
         break;
 
       case LOAD_DETAILS_SUCCESS:
-        console.log('load details success', action.details, action.id);
-        console.log(state.sandwiches[action.id - 1].details);
         draft.sandwiches[action.id - 1].details = action.details;
         draft.loading = false;
         break;
