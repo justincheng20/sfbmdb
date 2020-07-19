@@ -22,12 +22,11 @@ export function SandwichPage({ loading, error, onLoad, details }) {
   const { id } = useParams();
   useInjectSaga({ key, saga });
   useEffect(() => {
-    console.log("useEffect")
     onLoad(id);
   }, []);
-  
+
   const sandwich = details[id - 1];
-  
+
   if (loading || sandwich.data === false) {
     return 'Loading...';
   }
@@ -35,15 +34,21 @@ export function SandwichPage({ loading, error, onLoad, details }) {
   if (error) {
     return 'Something went wrong.';
   }
-  
-  
 
   return (
     <div>
       <h1>{sandwich.name}</h1>
       <div>{sandwich.details.description}</div>
       <div>Tastes Like: {sandwich.details.music}</div>
-      <iframe src={`https://open.spotify.com/embed/track/${sandwich.details.spotify}`} width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+      <iframe
+        title="musicPlayer"
+        src={`https://open.spotify.com/embed/track/${sandwich.details.spotify}`}
+        width="300"
+        height="380"
+        frameBorder="0"
+        allowTransparency="true"
+        allow="encrypted-media"
+      />
     </div>
   );
 }
