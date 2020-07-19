@@ -3,15 +3,17 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 const INITIAL_STATE = {
-  title: "",
+  name: "",
+  price: "",
   description: "",
-  body: ""
+  music: "",
+  spotify: ""
 }
 
-function NewPage({}) {
+function NewPage() {
   const [formData, setFormData] = useState(INITIAL_STATE);
   // const history = useHistory();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const handleChange = evt => {
     const { name, value } = evt.target;
@@ -41,25 +43,44 @@ function NewPage({}) {
     <div className="AddEditPostForm">
       <h1> New Post</h1>
       <form>
-        <label htmlFor="title">Title</label>
-        <input className="AddEditForm-input" type="text"
-          id="title"
-          name="title"
-          value={formData.title}
+        <label htmlFor="name">Name</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+        />
+        <label htmlFor="price">Price</label>
+        <input
+          type="text"
+          id="price"
+          name="price"
+          value={formData.price}
           onChange={handleChange}
         />
         <label htmlFor="description">Description</label>
-        <input className="AddEditForm-input" type="text"
+        <input
+          type="text"
           id="description"
           name="description"
           value={formData.description}
           onChange={handleChange}
         />
-        <label htmlFor="body">Body</label>
-        <textarea className="AddEditForm-input" type="text"
-          id="body"
-          name="body"
-          value={formData.body}
+        <label htmlFor="music">Music</label>
+        <input
+          type="text"
+          id="music"
+          name="music"
+          value={formData.music}
+          onChange={handleChange}
+        />
+        <label htmlFor="spotify">Spotify</label>
+        <input
+          type="text"
+          id="spotify"
+          name="spotify"
+          value={formData.spotify}
           onChange={handleChange}
         />
         {/* <button className="AddEditForm-btn-save" onClick={handleSubmit}>Save</button>
