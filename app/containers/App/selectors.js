@@ -29,10 +29,10 @@ const makeSelectLocation = () =>
     routerState => routerState.location,
   );
 
-const makeSelectDetails = id =>
+const makeSelectDetails = () =>
   createSelector(
     selectGlobal,
-    globalState => globalState.sandwiches[id - 1].details,
+    globalState => globalState.sandwiches,
   );
 
 export {

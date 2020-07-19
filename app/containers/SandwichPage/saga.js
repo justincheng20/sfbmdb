@@ -10,7 +10,7 @@ export function* getDetails(action) {
   try {
     const resp = yield call(request, requestURL);
     console.log(resp);
-    yield put(detailsLoaded(resp));
+    yield put(detailsLoaded(resp, id));
   } catch (err) {
     yield put(detailsLoadingError(err));
   }

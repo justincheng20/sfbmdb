@@ -34,9 +34,11 @@ export function loadDetails(id) {
   };
 }
 
-export function detailsLoaded() {
+export function detailsLoaded(details, id) {
   return {
     type: LOAD_DETAILS_SUCCESS,
+    details,
+    id,
   };
 }
 

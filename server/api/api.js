@@ -12,7 +12,6 @@ app.use(express.json());
 
 app.get('/', async function (req, res, next) {
   // Move logic to a model later
-  console.log("!")
   try {
     const response = await db.query(
       `SELECT s.id,
@@ -22,7 +21,7 @@ app.get('/', async function (req, res, next) {
       `
     );
     const data = response.rows;
-    data.forEach(entry => (entry.data = false));
+    data.forEach(entry => (entry.details = false));
     return res.status(200).json({ data });
   } catch (err) {
     return next(err);
@@ -31,7 +30,6 @@ app.get('/', async function (req, res, next) {
 
 app.get('/sandwiches/:id', async function (req, res, next) {
   try {
-    console.log(req.params.id)
     const result = await db.query(
       `SELECT s.description,
               s.music

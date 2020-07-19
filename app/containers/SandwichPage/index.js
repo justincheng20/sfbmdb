@@ -16,18 +16,19 @@ import {
 import { loadDetails } from '../App/actions';
 import saga from './saga';
 
-// const key = '';
+const key = 'sandwiches';
 
-export function SandwichPage({ loading, error, onLoad, sandwiches }) {
+export function SandwichPage({ loading, error, onLoad, details }) {
   const { id } = useParams();
-  const key = id;
   useInjectSaga({ key, saga });
   useEffect(() => {
+    console.log("useEffect")
     onLoad(id);
   }, []);
-  console.log(id)
-  const sandwich = sandwiches[id - 1];
-  if (loading || !sandwich) {
+  
+  const sandwich = details[id - 1];
+  
+  if (loading || sandwich.data === false) {
     return 'Loading...';
   }
 
@@ -48,15 +49,15 @@ export function SandwichPage({ loading, error, onLoad, sandwiches }) {
 SandwichPage.propTypes = {
   loading: PropTypes.bool,
   error: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
-  sandwiches: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
-  // details: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
+  // sandwiches: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
+  details: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
   onLoad: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
   loading: makeSelectLoading(),
   error: makeSelectError(),
-  sandwiches: makeSelectSandwiches(),
+  details: makeSelectSandwiches(),
 });
 
 export function mapDispatchToProps(dispatch) {

@@ -62,6 +62,8 @@ const appReducer = (state = initialState, action) =>
         break;
 
       case LOAD_DETAILS_SUCCESS:
+        console.log('load details success', action.details, action.id);
+        console.log(state.sandwiches[action.id - 1].details);
         draft.sandwiches[action.id - 1].details = action.details;
         draft.loading = false;
         break;
