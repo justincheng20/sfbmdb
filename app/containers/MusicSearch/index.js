@@ -11,13 +11,21 @@ import saga from './saga';
 
 const key = 'musicSearch';
 
-export function MusicSearch({ loading, error, handleSubmit }) {
+export function MusicSearch({ loading, error, searchAlbums }) {
   useInjectSaga({ key, saga });
   const [formData, setFormData] = useState({ name: '' });
 
+  const handleSubmit = evt => {
+    console.log("!")
+    evt.preventDefault();
+    console.log("Check out state ->", formData);
+    // do something with the data submitted
+    searchAlbums(formData.name);
+  };
+
   const handleChange = evt => {
     const { name, value } = evt.target;
-    console.log("data",formData)
+    console.log("data", formData)
     setFormData(oldData => ({
       ...oldData,
       [name]: value,
@@ -28,7 +36,7 @@ export function MusicSearch({ loading, error, handleSubmit }) {
     <div>
       <div className="AddForm">
         <h1>Find Album</h1>
-        <form>
+        <form onSubmit={handleSubmit}>
           <label htmlFor="name">Album Name</label>
           <input
             type="text"
@@ -37,17 +45,15 @@ export function MusicSearch({ loading, error, handleSubmit }) {
             value={formData.name}
             onChange={handleChange}
           />
+          <button type="submit">Search</button>
         </form>
-        <button type="submit" onClick={handleSubmit(formData.name)}>
-          Search
-        </button>
       </div>
     </div>
   );
 }
 
 MusicSearch.propTypes = {
-  handleSubmit: PropTypes.func,
+  searchAlbums: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -57,7 +63,7 @@ const mapStateToProps = createStructuredSelector({
 
 export function mapDispatchToProps(dispatch) {
   return {
-    handleSubmit: title => dispatch(loadAlbums(title)),
+    searchAlbums: title => dispatch(loadAlbums(title)),
   };
 }
 
