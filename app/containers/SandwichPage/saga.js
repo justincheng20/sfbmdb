@@ -6,8 +6,6 @@ import request from 'utils/request';
 export function* getDetails(action) {
   let id = action.id;
   const requestURL = `http://localhost:3000/api/sandwiches/${id}`;
-  // const requestURL = `https://api.spotify.com/v1/search?q=ham`;
-  console.log(requestURL);
   try {
     const resp = yield call(request, requestURL);
     console.log(resp);

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 // import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import MusicSearch from 'containers/MusicSearch';
 
 const INITIAL_STATE = {
   name: "",
@@ -21,7 +22,7 @@ function NewPage() {
       ...oldData,
       [name]: value
     }));
-  }
+  };
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();
@@ -33,14 +34,14 @@ function NewPage() {
     //   dispatch(addPost(formData));
     //   history.push("/")
     // }
-  }
+  };
 
   // const handleCancel = () => {
   //   post ? toggleForm() : history.push("/");
   // }
 
   return (
-    <div className="AddEditPostForm">
+    <div className="AddForm">
       <h1> New Post</h1>
       <form>
         <label htmlFor="name">Name</label>
@@ -86,8 +87,9 @@ function NewPage() {
         {/* <button className="AddEditForm-btn-save" onClick={handleSubmit}>Save</button>
         <button className="AddEditForm-btn-cancel" onClick={handleCancel}>Cancel</button> */}
       </form>
+      <MusicSearch />
     </div>
-  )
+  );
 }
 
 export default NewPage;

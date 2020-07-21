@@ -5,6 +5,9 @@ import {
   LOAD_DETAILS,
   LOAD_DETAILS_SUCCESS,
   LOAD_DETAILS_ERROR,
+  LOAD_ALBUMS,
+  LOAD_ALBUMS_SUCCESS,
+  LOAD_ALBUMS_ERROR,
 } from './constants';
 
 export function loadSandwiches() {
@@ -45,6 +48,27 @@ export function detailsLoaded(details, id) {
 export function detailsLoadingError(error) {
   return {
     type: LOAD_DETAILS_ERROR,
+    error,
+  };
+}
+
+export function loadAlbums(title) {
+  return {
+    type: LOAD_ALBUMS,
+    title,
+  };
+}
+
+export function albumsLoaded(albums) {
+  return {
+    type: LOAD_ALBUMS_SUCCESS,
+    albums,
+  };
+}
+
+export function albumsLoadingError(error) {
+  return {
+    type: LOAD_ALBUMS_ERROR,
     error,
   };
 }
