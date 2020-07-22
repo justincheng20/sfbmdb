@@ -9,6 +9,8 @@ import {
   LOAD_ALBUMS_SUCCESS,
   LOAD_ALBUMS_ERROR,
   SELECT_ALBUM,
+  SELECT_ALBUM_SUCCESS,
+  SELECT_ALBUM_ERROR,
 } from './constants';
 
 export function loadSandwiches() {
@@ -77,5 +79,18 @@ export function albumsLoadingError(error) {
 export function selectAlbum() {
   return {
     type: SELECT_ALBUM,
+  };
+}
+
+export function albumSelected() {
+  return {
+    type: SELECT_ALBUM_SUCCESS,
+  };
+}
+
+export function albumSelectingError(error) {
+  return {
+    type: SELECT_ALBUM_ERROR,
+    error,
   };
 }

@@ -8,3 +8,5 @@ export const LOAD_ALBUMS = 'boilerplate/App/LOAD_ALBUMS';
 export const LOAD_ALBUMS_SUCCESS = 'boilerplate/App/LOAD_ALBUMS_SUCCESS';
 export const LOAD_ALBUMS_ERROR = 'boilerplate/App/LOAD_ALBUMS_ERROR';
 export const SELECT_ALBUM = 'boilerplate/App/SELECT_ALBUM';
+export const SELECT_ALBUM_SUCCESS = 'boilerplate/App/SELECT_ALBUM_SUCCESS';
+export const SELECT_ALBUM_ERROR = 'boilerplate/App/SELECT_ALBUM_ERROR';
