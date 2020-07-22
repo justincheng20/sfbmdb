@@ -29,7 +29,7 @@ export function MusicList({ loading, error, albums }) {
 }
 
 MusicList.propTypes = {
-  albums: PropTypes.array,
+  albums: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
 };
 
 const mapStateToProps = createStructuredSelector({

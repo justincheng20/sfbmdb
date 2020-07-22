@@ -12,6 +12,7 @@ export const initialState = {
   loading: false,
   error: false,
   sandwiches: false,
+  albums: false,
 };
 
 /* eslint-disable default-case, no-param-reassign */

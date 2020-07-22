@@ -8,6 +8,7 @@ import {
   LOAD_ALBUMS,
   LOAD_ALBUMS_SUCCESS,
   LOAD_ALBUMS_ERROR,
+  SELECT_ALBUM,
 } from './constants';
 
 export function loadSandwiches() {
@@ -70,5 +71,11 @@ export function albumsLoadingError(error) {
   return {
     type: LOAD_ALBUMS_ERROR,
     error,
+  };
+}
+
+export function selectAlbum() {
+  return {
+    type: SELECT_ALBUM,
   };
 }
