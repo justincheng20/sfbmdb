@@ -35,6 +35,12 @@ const makeSelectDetails = () =>
     globalState => globalState.sandwiches,
   );
 
+const makeSelectAlbums = () =>
+  createSelector(
+    selectGlobal,
+    globalState => globalState.albums,
+  );
+
 export {
   selectGlobal,
   makeSelectLoading,
@@ -42,4 +48,5 @@ export {
   makeSelectSandwiches,
   makeSelectLocation,
   makeSelectDetails,
+  makeSelectAlbums,
 };

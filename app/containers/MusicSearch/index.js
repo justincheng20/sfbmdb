@@ -6,6 +6,7 @@ import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
 import { useInjectSaga } from 'utils/injectSaga';
 import { makeSelectLoading, makeSelectError } from 'containers/App/selectors';
+import MusicList from 'containers/MusicList';
 import { loadAlbums } from '../App/actions';
 import saga from './saga';
 
@@ -16,16 +17,12 @@ export function MusicSearch({ loading, error, searchAlbums }) {
   const [formData, setFormData] = useState({ name: '' });
 
   const handleSubmit = evt => {
-    console.log("!")
     evt.preventDefault();
-    console.log("Check out state ->", formData);
-    // do something with the data submitted
     searchAlbums(formData.name);
   };
 
   const handleChange = evt => {
     const { name, value } = evt.target;
-    console.log("data", formData)
     setFormData(oldData => ({
       ...oldData,
       [name]: value,
@@ -48,6 +45,7 @@ export function MusicSearch({ loading, error, searchAlbums }) {
           <button type="submit">Search</button>
         </form>
       </div>
+      <MusicList />
     </div>
   );
 }
